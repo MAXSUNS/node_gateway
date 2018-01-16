@@ -1,7 +1,6 @@
 const router = require('koa-router')()
 
 
-router.prefix('/api');
 
 /**
  * 路由配置
@@ -9,7 +8,7 @@ router.prefix('/api');
  * @type {[*]}
  */
 const routes = [
-    { path: '/wechat', controller: require('../controllers/wechatController')},
+    { path: '/api/wechat', controller: require('../controllers/wechatController')},
 ]
 
 /**
