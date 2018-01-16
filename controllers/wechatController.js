@@ -12,7 +12,6 @@ const wechatService = require('../services/wechatService');
 
 const crypto = require('crypto')
 
-const QR_CODE_EXPIRED_IN = 1800;
 
 const handler = new Wechat(config.wechat).middleware(async (message, ctx) => {
     // 微信输入信息就是这个 message
@@ -78,25 +77,6 @@ router.get('/', function (ctx, next) {
 });
 
 router.post('/', handler);
-router.post('/register', async (ctx, next) => {
-    console.log(ctx.request.body);
-    let reqBody = ctx.request.body;
-    ctx.body = "234234";
-});
-
-router.post('/js/config', function*() {
-
-    const body = this.request.body;
-    const param = {
-        debug: false,
-        jsApiList: ['getLocation'],
-        url: body.url
-    };
-
-    let config = yield wechatService.api.getJsConfig(param);
-
-    this.body = config;
-});
 
 
 exports = module.exports = router;

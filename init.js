@@ -28,7 +28,7 @@ let envConfig;
  * 检查当前环境
  * @type {string}
  */
-let environment = 'dev';
+let environment = 'prod';
 
 if (process.env.NODE_ENV) {
   environment = process.env.NODE_ENV;
@@ -72,14 +72,6 @@ if (!fs.existsSync('logs')) {
 const defaultLogger = new (winston.Logger)();
 
 let transports = [];
-// transports.push(new (winston.transports.File)({
-//   filename: 'logs/app.log',
-//   json: false,
-//   timestamp: logTimestamp,
-//   level: 'info',
-//   label: 'logger',
-//   options: {name: 'test'}
-// }));
 
 /**
  * 配置滚动日志文件记录

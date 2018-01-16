@@ -23,26 +23,26 @@ onerror(app)
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
-}))
-app.use(json())
-app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+}));
+app.use(json());
+app.use(logger());
+app.use(require('koa-static')(__dirname + '/public'));
 
 app.use(views(__dirname + '/views', {
   extension: 'pug'
-}))
+}));
 
 // logger
 app.use(async (ctx, next) => {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
+  const start = new Date();
+  await next();
+  const ms = new Date() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
+});
 
 // routes
-app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+app.use(index.routes(), index.allowedMethods());
+app.use(users.routes(), users.allowedMethods());
 
 // error-handling
 app.on('error', (err, ctx) => {
@@ -51,7 +51,7 @@ app.on('error', (err, ctx) => {
 /**
  * 应用端口
  */
-const port = config.app.port || 3000;
+const port = config.app.port || 8081;
 
 /**
  * 启动应用
@@ -61,4 +61,4 @@ app.listen(port, () => {
 });
 
 
-module.exports = app
+module.exports = app;
