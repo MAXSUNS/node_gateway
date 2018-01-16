@@ -1,3 +1,6 @@
+
+require('./init');
+
 const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
@@ -9,8 +12,13 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const users = require('./routes/users')
 
+
+const wechat = require('co-wechat');
+
 // error handler
 onerror(app)
+
+
 
 // middlewares
 app.use(bodyparser({
@@ -40,5 +48,17 @@ app.use(users.routes(), users.allowedMethods())
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
+/**
+ * 应用端口
+ */
+const port = config.app.port || 3000;
+
+/**
+ * 启动应用
+ */
+app.listen(port, () => {
+    console.info('app start, listen on port %s', port)
+});
+
 
 module.exports = app

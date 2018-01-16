@@ -1,22 +1,23 @@
 const router = require('koa-router')()
 
 
-router.prefix('/api')
+router.prefix('/api');
 
-router.get('/', async (ctx, next) => {
-  await ctx.render('index', {
-    title: 'Hello Koa 2!'
-  })
-})
+/**
+ * 路由配置
+ * 一个path对应一个controller
+ * @type {[*]}
+ */
+const routes = [
+    { path: '/wechat', controller: require('../controllers/wechatController')},
+]
 
-router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
-})
+/**
+ * 路由添加
+ */
+routes.forEach((route) => {
+    router.use(route.path, route.controller.routes(), route.controller.allowedMethods());
+});
 
-router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json'
-  }
-})
 
 module.exports = router

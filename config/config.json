@@ -1,0 +1,22 @@
+{
+  "app": {
+    "name": "api-server",
+    "port": 8081,
+    "useCache": false,
+    "cacheType": "memory"
+  },
+  "logger": {
+    "console": true,
+    "file": true
+  },
+  "redis": {
+    "host": "127.0.0.1",
+    "port": 6379
+  },
+  "wechat": {
+    "appid": "appid",
+    "secret": "secret",
+    "token": "token",
+    "encodingAESKey": ""
+  }
+}
