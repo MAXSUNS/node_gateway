@@ -2,7 +2,7 @@
   "app": {
     "name": "api-server",
     "port": 8081,
-    "useCache": false,
+    "useCache": true,
     "cacheType": "memory"
   },
   "logger": {
