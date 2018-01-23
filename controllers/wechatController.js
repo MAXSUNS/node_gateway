@@ -13,7 +13,7 @@ const wechatService = require('../services/wechatService');
 const crypto = require('crypto')
 
 
-const handler = new Wechat(config.wechat).middleware(async (message, ctx) => {
+const handler = new Wechat(config.wechat).middleware(async(message, ctx) => {
     // 微信输入信息就是这个 message
     if (message.Content === 'diaosi') {
         // 回复屌丝(普通回复)
@@ -55,7 +55,6 @@ const handler = new Wechat(config.wechat).middleware(async (message, ctx) => {
 });
 
 
-
 router.get('/', function (ctx, next) {
     const token = config.wechat.token, // 自定义，与公众号设置的一致
         signature = ctx.query.signature,
@@ -72,7 +71,7 @@ router.get('/', function (ctx, next) {
     if (result === signature) {
         ctx.body = ctx.query.echostr
     } else {
-        ctx.body = { code: -1, msg: "fail"}
+        ctx.body = {code: -1, msg: "fail"}
     }
 });
 
